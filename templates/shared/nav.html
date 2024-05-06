@@ -1,0 +1,19 @@
+<nav class=" header-nav flex  justify-between " >
+    <div class="flex mb-auto">
+        <div class="pic">
+            <img class="w-20 h-16 " src="https://e7.pngegg.com/pngimages/248/673/png-transparent-cute-cartoon-cat-on-car-thumbnail.png" alt="Cute Car">
+        </div>
+        <ul >
+            <li ><a  href="{% url 'root' %}">首頁</a></li>
+            <li><a href="{% url 'about' %}">關於我</a></li>
+            <li><a href="{% url 'cars:index' %}">汽車列表</a></li>
+        </ul>
+    </div>
+    <div class="flex">
+        <ul >
+            <li><a href="http://">登出</a></li>
+            <li><a href="http://">登入</a></li>
+            <li><a href="http://">註冊</a></li>
+        </ul>
+    </div>
+</nav>

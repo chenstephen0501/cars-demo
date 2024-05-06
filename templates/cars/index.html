@@ -1,0 +1,31 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+    <div class="my-5">
+        <h1 class="text-5xl text-center bg-slate-200">汽車列表</h1>
+
+        <a class="w-1/12 text-center inline-block mt-6 px-4 py-2 bg-blue-600 text-zinc-100 rounded-md " href="http:{% url 'cars:new' %}">新增</a>
+
+        <div class="card-list mt-6 grid grid-cols-3 gap-4 place-items-center ">
+            {% for car in cars %}
+            <div class="card flex  bg-slate-400">
+                <a  href="http:{% url 'cars:show' car.id %}">
+                    <div class="pic grow-0">
+                        <img src="" class="w-56 h-24 bg-slate-300" alt="">
+                    </div>
+                    <div class="text flex flex-col flex-grow">
+                        <h3 class="title ">{{car.name}}</h3>
+                        <p class="">{{car.brand}}</p>
+                        <div class=""><span>{{car.color}}</span><span>{{car.style_body}}</span></div>
+                        <p class="flex-grow">{{car.description}}</p>
+                        <span class="">{{car.price}}</span>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+
+        </div>
+
+        
+    </div>
+{% endblock %}

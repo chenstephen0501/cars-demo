@@ -1,0 +1,45 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+    <div class="mt-5">
+        <h2 class="text-center">{{ car.name }}</h2>
+        <div>
+            <span>廠牌: {{car.brand}}</span>
+            <span>顏色: {{car.style_body}}</span>
+        </div>
+        <p>簡介: {{car.description}}</p>
+        <span>價格: {{car.price}}</span>
+        
+    </div>
+
+    <div class="flex mt-6 items-center">
+        <a class="w-1/12 h-10 leading-10  inline-block text-center  bg-green-600 text-zinc-100 rounded-md " href="http:{% url 'cars:edit' car.id %}">編輯</a>
+        <form  action="{% url 'cars:delete' car.id %}" method="post">
+            {% csrf_token %}
+            <button class="w-20 h-10 inline-block ms-5 bg-red-600 text-zinc-100 rounded-md " type="submit">刪除</button>
+        </form>
+    </div>
+
+    <div class="show-comment mt-6">
+        <form class="flex flex-col" hx-target="#comment-page" hx-post="{% url 'cars:comment' car.id %}" >
+            {% csrf_token %}
+            <label class="text-2xl" for="context">評論 : </label>
+            <textarea class=" border-solid border-2 border-slate-200 rounded" name="context" id="context" cols="10" rows="5"></textarea>
+        
+            <button  class="w-2/12 rounded-md mt-4 text-slate-50  py-3 bg-blue-500" type="submit">新增評論</button>
+        </form>
+    </div>
+
+    <div id="comment-page">
+    {% for comment in comments %}
+    <div class="comment-text mt-4 flex flex-col bg-slate-200">
+        <p class="py-3 pl-3">{{ comment.context }}</p>
+        <form hx-post="{% url 'comments:delete' comment.id %}" hx-target="closest .comment-text">
+            {% csrf_token %}
+            <button class="px-4 py-2 rounded-lg text-white  bg-red-400" type="submit">刪除訊息</button>
+        </form>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

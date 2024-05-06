@@ -1,0 +1,13 @@
+<div class="comment-page">
+
+    {% for comment in comments %}
+    <div class="comment-text mt-4 flex flex-col bg-slate-200 ">
+        <p class="py-3 pl-3">{{ comment.context }}</p>
+        <form action="{% url 'comments:delete' comment.id %}" method="post">
+            {% csrf_token %}
+            <button class="px-4 py-2 rounded-lg text-white  bg-red-400" type="submit">刪除訊息</button>
+        </form>
+    </div>
+    
+    {% endfor %}
+</div>

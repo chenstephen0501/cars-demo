@@ -1,0 +1,10 @@
+{% if messages %}
+<div class="flash">
+    {% for message in messages %}
+    <p class="{{message.tags}}">
+        <span>{{message}}</span>
+        <button type="button">X</button>
+    </p>
+    {% endfor %}
+</div>
+{% endif %}

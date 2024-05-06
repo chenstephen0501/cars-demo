@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    @apply border border-x-green-700;
+}
+
+.header-nav > div > ul {
+    align-items: center;
+    display: flex;
+}
+
+.header-nav > div > ul > li > a {
+    padding: 22px 8px;
+}
+.new-form-page, .edit-form-page {
+    & form > .form-group {
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto;
+        width: 50%;
+        margin-bottom: 12px;
+
+        & input {
+            height: 40px;
+            border: 2px solid rgb(214, 214, 214);
+            border-radius: 5px;
+        }
+
+        & textarea {
+            border: 2px solid rgb(214, 214, 214);
+            border-radius: 5px;
+        }
+
+        & button {
+            @apply mt-4 px-4 py-2 bg-blue-600 rounded-md text-white
+        }
+    }
+
+}
+
+.flash {
+    & .success {
+        background-color: rgb(0, 255, 166);
+        @apply flex justify-between px-5 py-3 items-center;
+
+        & button {
+            @apply border-solid border-2 border-white rounded-md px-2.5 py-1;
+        }
+    }
+    
+    & .error {
+        @apply flex justify-between px-5 py-3 items-center bg-red-500;
+
+        & button {
+            @apply border-solid border-2 border-white rounded-md px-2.5 py-1;
+        }
+    }
+}

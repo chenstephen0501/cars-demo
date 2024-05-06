@@ -1,0 +1,6 @@
+.env
+.venv
+node_modules/
+db.sqllite3
+static/scripts/app.js
+static/styles/style.css
